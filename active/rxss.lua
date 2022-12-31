@@ -1,14 +1,14 @@
 -- require("../func/auto_cmd")
 PAYLOADS = read(string.format("%s/txt/xss.txt",SCRIPT_PATH))
 local function send_report(url,parameter,payload)
-    NewReport:setName("reflected cross site scripting")
-    NewReport:setDescription("https://owasp.org/www-community/attacks/xss/")
-    NewReport:setRisk("medium")
-    NewReport:setUrl(url)
-    NewReport:setParam(parameter)
-    NewReport:setAttack(payload)
-    NewReport:setEvidence(generate_css_selector(payload))
-    print_report(NewReport)
+    VulnReport:setName("reflected cross site scripting")
+    VulnReport:setDescription("https://owasp.org/www-community/attacks/xss/")
+    VulnReport:setRisk("medium")
+    VulnReport:setUrl(url)
+    VulnReport:setParam(parameter)
+    VulnReport:setAttack(payload)
+    VulnReport:setEvidence(generate_css_selector(payload))
+    print_report(VulnReport)
 end
 
 local function gethtmlLocation(the_location)
@@ -57,7 +57,7 @@ function main(url)
                                 local searcher = html_search(body,value.search)
                                 if string.len(searcher) > 0 then
                                     send_report(req.url:GetStrOrNil(),param_name,value.payload)
-                                    Reports:addReport(NewReport)
+                                    Reports:addReport(VulnReport)
                                     break
                                 end
                             end
@@ -72,7 +72,7 @@ function main(url)
                         local searcher = html_search(body,css_pattern)
                         if string.len(searcher) > 0 then
                             send_report(resp.url:GetStrOrNil(),param_name,payload)
-                            Reports:addReport(NewReport)
+                            Reports:addReport(VulnReport)
                         end
 
                     end

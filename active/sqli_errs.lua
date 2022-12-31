@@ -18,14 +18,14 @@ PAYLOADS = {
 }
 
 local function send_report(url,parameter,payload,matching_error)
-    NewReport:setName("SQL Injection")
-    NewReport:setDescription("https://owasp.org/www-community/attacks/SQL_Injection")
-    NewReport:setRisk("high")
-    NewReport:setUrl(url)
-    NewReport:setParam(parameter)
-    NewReport:setAttack(payload)
-    NewReport:setEvidence(matching_error)
-    print_report(NewReport)
+    VulnReport:setName("SQL Injection")
+    VulnReport:setDescription("https://owasp.org/www-community/attacks/SQL_Injection")
+    VulnReport:setRisk("high")
+    VulnReport:setUrl(url)
+    VulnReport:setParam(parameter)
+    VulnReport:setAttack(payload)
+    VulnReport:setEvidence(matching_error)
+    print_report(VulnReport)
 end
 
 function main(url) 
@@ -50,7 +50,7 @@ function main(url)
                             -- NOTHING
                     else
                         send_report(resp.url:GetStrOrNil(),param_name,payload,sqlerror_match)
-                        Reports:addReport(NewReport)
+                        Reports:addVulnReport(VulnReport)
                         STOP_PARAM = true
                         break
                     end
