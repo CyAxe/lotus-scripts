@@ -38,14 +38,19 @@ function matcher(param_name)
             break
         end
         for sqlerror_match in SQLI_ERRORS:gmatch("[^\n]+") do
-                local match = is_match(sqlerror_match,body)
-                if ( match == false or match == nil) then
-                        -- NOTHING
-                else
-                    send_report(resp.url:GetStrOrNil(),param_name,payload,sqlerror_match)
-                    Reports:addVulnReport(VulnReport)
-                    STOP_PARAM = true
-                    break
+                local status, match = pcall(function () 
+                    return is_match(sqlerror_match,body)
+                end)
+                if status ~= nil then 
+                    if ( match == false or match == nil) then
+                            -- NOTHING
+                    else
+                        send_report(resp.url:GetStrOrNil(),param_name,payload,sqlerror_match)
+                        Reports:addVulnReport(VulnReport)
+                        STOP_PARAM = true
+                        break
+                    end
+
                 end
         end
     end
