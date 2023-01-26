@@ -1,5 +1,5 @@
 SQLI_ERRORS = readfile(JOIN_SCRIPT_DIR("txt/sqli_errs.txt"))
-SCAN_TYPE = 2
+SCAN_TYPE = 2 -- ACCEPT FULL TARGET URL 
 
 PAYLOADS = {
     "'123",
