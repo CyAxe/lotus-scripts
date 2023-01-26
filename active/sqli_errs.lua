@@ -1,4 +1,5 @@
-SQLI_ERRORS = read(JOIN_SCRIPT_DIR("txt/sqli_errs.txt"))
+SQLI_ERRORS = readfile(JOIN_SCRIPT_DIR("txt/sqli_errs.txt"))
+SCAN_TYPE = 2
 
 PAYLOADS = {
     "'123",
@@ -56,6 +57,7 @@ function matcher(param_name)
     end
 end
 
-function main(url) 
+function main() 
+    print(rr)
     LuaThreader:run_scan(HttpMessage:getParams(), matcher, 30)
 end
