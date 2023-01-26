@@ -42,10 +42,8 @@ function matcher(param_name)
                 local status, match = pcall(function () 
                     return is_match(sqlerror_match,body)
                 end)
-                if status ~= nil then 
-                    if ( match == false or match == nil) then
-                            -- NOTHING
-                    else
+                if status == true then 
+                    if match == true then
                         send_report(resp.url:GetStrOrNil(),param_name,payload,sqlerror_match)
                         Reports:addVulnReport(VulnReport)
                         STOP_PARAM = true
@@ -58,6 +56,5 @@ function matcher(param_name)
 end
 
 function main() 
-    print(rr)
     LuaThreader:run_scan(HttpMessage:getParams(), matcher, 30)
 end
