@@ -55,5 +55,6 @@ end
 function main()
     for _,param in ipairs(HttpMessage:getParams()) do
         ParamScan:add_scan(param,SSTI_PAYLOADS, scan_ssti,ssti_callback, 5)
+        ParamScan:start_scan()
     end
 end
