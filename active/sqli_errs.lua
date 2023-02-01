@@ -26,35 +26,34 @@ local function send_report(url,parameter,payload,matching_error)
     VulnReport:setParam(parameter)
     VulnReport:setAttack(payload)
     VulnReport:setEvidence(matching_error)
-    print_report(VulnReport)
+    print_vuln_report(VulnReport)
 end
 
-function matcher(param_name)
-    STOP_PARAM = false
-    for payload_index, payload in pairs(PAYLOADS) do 
+local function matcher(payload)
+    for _, param_name in pairs(HttpMessage:getParams()) do 
         local new_url = HttpMessage:setParam(param_name,payload)
-        local resp = http:send("GET",new_url)
-        local body = resp.body:GetStrOrNil()
-        if STOP_PARAM == true then
-            break
-        end
-        for sqlerror_match in SQLI_ERRORS:gmatch("[^\n]+") do
+        local resp_status,resp = pcall(function ()
+            return http:send("GET",new_url)
+        end)
+        if resp_status == true then
+            local body = resp.body:GetStrOrNil()
+            for sqlerror_match in SQLI_ERRORS:gmatch("[^\n]+") do
                 local status, match = pcall(function () 
                     return is_match(sqlerror_match,body)
                 end)
-                if status == true then 
+                if status == true then
                     if match == true then
                         send_report(resp.url:GetStrOrNil(),param_name,payload,sqlerror_match)
                         Reports:addVulnReport(VulnReport)
-                        STOP_PARAM = true
                         break
                     end
 
                 end
+            end
         end
     end
 end
 
 function main() 
-    LuaThreader:run_scan(HttpMessage:getParams(), matcher, 30)
+    ParamScan:add_scan(PAYLOADS, matcher, 5)
 end
