@@ -1,4 +1,5 @@
 SCAN_TYPE = 2
+
 local function send_report(url,parameter,payload,matching_error)
     VulnReport:setName("Template Injection")
     VulnReport:setDescription("https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/07-Input_Validation_Testing/18-Testing_for_Server_Side_Template_Injection")
@@ -25,9 +26,9 @@ function scan_ssti(param_name,payload)
     end)
         if resp_status == true then
             local out = {}
-            local body = resp.body:GetStrOrNil() -- Get the response body as string
+            local body = resp.body -- Get the response body as string
             out["body"] = body
-            out["url"] = resp.url:GetStrOrNil()
+            out["url"] = resp.url
             out["param_name"] = param_name
             out["payload"] = payload
             return out
@@ -35,6 +36,9 @@ function scan_ssti(param_name,payload)
 end
 
 function ssti_callback(data)
+    if data == nil then
+        return -- avoid nil cases
+    end
     url = data["url"]
     body = data["body"]
     payload = data["payload"]
