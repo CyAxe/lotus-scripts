@@ -57,7 +57,7 @@ function ssti_callback(data)
 end
 
 function main()
-    for _,param in ipairs(HttpMessage:getParams()) do
+    for _,param in ipairs(HttpMessage:Params()) do
         ParamScan:add_scan(param,SSTI_PAYLOADS, scan_ssti,ssti_callback, 5)
         ParamScan:start_scan()
     end
