@@ -7,6 +7,8 @@ end
 
 -- CveReport 
 function CveReport()end
+function VulnReport()end
+function print_vuln_report(report)end
 
 function Reports()end
 function HttpMessage()end
@@ -17,11 +19,8 @@ function ResponseMatcher()end
 -- path join function can be used for urlpath join to avoid duplicates output 
 function pathjoin(current_path, new_path)end
 
-
 -- base64encode
-function base64encode(data)
-    
-end
+function base64encode(data)end
 
 -- base64decode 
 function base64decode(b64data)
