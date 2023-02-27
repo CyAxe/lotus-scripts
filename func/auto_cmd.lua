@@ -5,6 +5,19 @@ function XSSGenerate(payload_location, response, payload)
 
 end
 
+-- CveReport 
+function CveReport()end
+
+function Reports()end
+function HttpMessage()end
+function http()end
+function ResponseMatcher()end
+
+-- pathjoin
+-- path join function can be used for urlpath join to avoid duplicates output 
+function pathjoin(current_path, new_path)end
+
+
 -- base64encode
 function base64encode(data)
     
