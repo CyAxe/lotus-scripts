@@ -3,7 +3,7 @@ local SQLI_MATCH = readfile(JOIN_SCRIPT_DIR("txt/sqli_errs.txt"))
 
 local function send_report(url,parameter,payload,matching_error)
     VulnReport:setName("SQL INJECTION")
-    VulnReport:setDescription("https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/07-Input_Validation_Testing/18-Testing_for_Server_Side_Template_Injection")
+    VulnReport:setDescription("https://owasp.org/www-community/attacks/SQL_Injection")
     VulnReport:setRisk("high")
     VulnReport:setUrl(url)
     VulnReport:setParam(parameter)

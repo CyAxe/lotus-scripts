@@ -8,6 +8,7 @@ local function send_report(url,parameter,payload,matching_error)
     VulnReport:setParam(parameter)
     VulnReport:setAttack(payload)
     VulnReport:setEvidence(matching_error)
+    Reports:addVulnReport(VulnReport)
     print_vuln_report(VulnReport)
 end
 
