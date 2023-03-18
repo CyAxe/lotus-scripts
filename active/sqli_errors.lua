@@ -11,6 +11,7 @@ local function send_report(url, parameter, payload, matching_error)
    VulnReport:setParam(parameter)
    VulnReport:setAttack(payload)
    VulnReport:setEvidence(matching_error)
+   Reports:addVulnReport(VulnReport)
    print_vuln_report(VulnReport)
 end
 
@@ -59,6 +60,6 @@ function main()
    local payloads = {"'", '"'}
    for _, param in ipairs(HttpMessage:Params()) do
       ParamScan:start_scan()
-      ParamScan:add_scan(param, payloads, scan_sqli, sqli_callback, 2)
+      ParamScan:add_scan(param, payloads, scan_sqli, sqli_callback, FUZZ_WORKERS)
    end
 end
