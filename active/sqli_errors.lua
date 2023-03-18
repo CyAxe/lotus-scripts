@@ -1,7 +1,9 @@
-SCAN_TYPE = 2
+-- Define constant values
+SCAN_TYPE = 2 -- FULL URL INPUT 
 local SQLI_MATCH = readfile(JOIN_SCRIPT_DIR("txt/sqli_errs.txt"))
 
-local function send_report(url,parameter,payload,matching_error)
+-- Define a function to send a vulnerability report
+local function send_report(url, parameter, payload, matching_error)
    VulnReport:setName("SQL INJECTION")
    VulnReport:setDescription("https://owasp.org/www-community/attacks/SQL_Injection")
    VulnReport:setRisk("high")
@@ -12,47 +14,51 @@ local function send_report(url,parameter,payload,matching_error)
    print_vuln_report(VulnReport)
 end
 
-function scan_sqli(param_name,payload)
-   local new_url = HttpMessage:setParam(param_name,payload)
-   local resp_status,resp = pcall(function ()
-   return http:send{url=new_url} -- Sending a http request to the new url with GET Method
+-- Define a function to scan for SQL injection vulnerabilities
+local function scan_sqli(param_name, payload)
+   local new_url = HttpMessage:setParam(param_name, payload)
+   local resp_status, resp = pcall(function ()
+      -- Sending an HTTP request to the new URL with GET method
+      return http:send{url = new_url}
    end)
    if resp_status == true then
-      local out = {}
-      local body = resp.body -- Get the response body as string
-      out["body"] = body
-      out["url"] = resp.url
-      out["param_name"] = param_name
-      out["payload"] = payload
+      -- Get the response body as a string
+      local out = {
+         body = resp.body,
+         url = resp.url,
+         param_name = param_name,
+         payload = payload
+      }
       return out
    end
 end
 
-function sqli_callback(data)
-   local url = data["url"]
-   local body = data["body"]
-   local payload = data["payload"]
-   local param_name = data["param_name"]
+-- Define a function to handle SQL injection vulnerabilities
+local function sqli_callback(data)
+   local url = data.url
+   local body = data.body
+   local payload = data.payload
+   local param_name = data.param_name
+   -- Iterate through the SQL injection patterns and try to match them in the response body
    for sql_regex in SQLI_MATCH:gmatch("[^\r\n]+") do
       local match_status, match = pcall(function ()
-      -- Matching with the response and the targeted regex
-      -- we're using pcall here to avoid regex errors (and panic the code)
-      return is_match(sql_regex,body)
+         -- Matching with the response and the targeted regex
+         -- we're using pcall here to avoid regex errors (and panic the code)
+         return is_match(sql_regex, body)
       end)
-      if match_status == true then
-         if match == true then
-            send_report(url,param_name,payload,sql_regex)
-            Reports:addVulnReport(VulnReport)
-            ParamScan:stop_scan()
-         end
+      if match_status == true and match == true then
+         -- Send a vulnerability report and stop the parameter scan
+         send_report(url, param_name, payload, sql_regex)
+         ParamScan:stop_scan()
       end
    end
 end
 
+-- Define the main function to initiate the parameter scan
 function main()
-   payloads = {"'",'"'}
-   for _,param in ipairs(HttpMessage:Params()) do
+   local payloads = {"'", '"'}
+   for _, param in ipairs(HttpMessage:Params()) do
       ParamScan:start_scan()
-      ParamScan:add_scan(param,payloads, scan_sqli,sqli_callback, 1)
+      ParamScan:add_scan(param, payloads, scan_sqli, sqli_callback, 2)
    end
 end
