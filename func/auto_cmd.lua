@@ -4,14 +4,14 @@
 function XSSGenerate(payload_location, response, payload)
 
 end
-
+-- JOIN PATH TO SCRIPT PATH
+function JOIN_SCRIPT_DIR(path)end
 -- CveReport 
 function CveReport()end
 function VulnReport()end
 function print_vuln_report(report)end
 
 function Reports()end
-function HttpMessage()end
 function http()end
 function ResponseMatcher()end
 
@@ -94,7 +94,7 @@ end
 -- is this text matched with Regex Pattern
 -- * `text` String
 -- * `regex` String
-function is_match() end
+function is_match(regex, text) end
 
 -- Print The CveReport in the console
 -- * `CVE_REPORT` - CveReport Class
@@ -140,7 +140,7 @@ function println(text)end
 function sleep(delay_time)end
 
 -- reading files
-function read(file_path)end
+function readfile(file_path)end
 
 -- error log
 function log_error(txt)end
@@ -205,3 +205,14 @@ function str_startswith(text, txt2)end
 -- str_contains("Hello World, WE ARE USING LUA FOR WEB Security YAYYYYYYy","USING")
 --```
 function str_contains(text,txt2)end
+
+
+function ParamScan() end
+
+function ParamScan:start_scan(self)end
+function ParamScan:add_scan(self,shared_item, shared_iterator, target_function, callback_function, workers_number)end
+function ParamScan:is_stop(self)end
+    
+end
+    
+end
