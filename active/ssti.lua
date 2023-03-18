@@ -23,7 +23,7 @@ SSTI_PAYLOADS = {
 function scan_ssti(param_name,payload)
     local new_url = HttpMessage:setParam(param_name,payload)
     local resp_status,resp = pcall(function ()
-        return http:send("GET",new_url) -- Sending a http request to the new url with GET Method
+    return http:send("GET",new_url) -- Sending a http request to the new url with GET Method
     end)
     if resp_status == true then
         local out = {}
@@ -41,10 +41,10 @@ function ssti_callback(data)
     body = data["body"]
     payload = data["payload"]
     param_name = data["param_name"]
-    local match_status, match = pcall(function () 
-        -- Matching with the response and the targeted regex
-        -- we're using pcall here to avoid regex errors (and panic the code)
-        return str_contains(body, "lot4us")
+    local match_status, match = pcall(function ()
+    -- Matching with the response and the targeted regex
+    -- we're using pcall here to avoid regex errors (and panic the code)
+    return str_contains(body, "lot4us")
     end)
     if match_status == true then
         if match == true then
