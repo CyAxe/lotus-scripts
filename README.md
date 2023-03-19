@@ -11,7 +11,7 @@ We're also actively developing scripts for some famous CVEs, such as CVE-2014-23
 | -----------------------------| ----------------------------|
 | SQLiDetector                 | :heavy_check_mark: Finished  |
 | Simple SSTI Detector         | :heavy_check_mark: Finished  |
-| BugCrowd HunT Framework      | :pushpin: In progress        |
+| BugCrowd HunT Framework      | :hourglass_flowing_sand: In progress        |
 | CVE-2014-2321.lua            | :heavy_check_mark: Finished  |
 | CVE-2019-11248.lua           | :heavy_check_mark: Finished  |
 | CVE-2020-11450.lua           | :heavy_check_mark: Finished  |
@@ -20,12 +20,12 @@ We're also actively developing scripts for some famous CVEs, such as CVE-2014-23
 | CVE-2022-1234.lua            | :hourglass_flowing_sand: In progress |
 | Web Application Scanner      | :hourglass_flowing_sand: In progress |
 | SSH Bruteforce               | :hourglass_flowing_sand: In progress |
-| CVE-2017-5638 Apache Struts  | :heavy_check_mark: In progress |
-| CVE-2017-11882 Microsoft     | :heavy_check_mark: In progress |
-| CVE-2018-7600 Drupal         | :heavy_check_mark: In progress |
-| CVE-2018-8174 Windows        | :heavy_check_mark: In progress |
-| CVE-2019-19781 Citrix        | :heavy_check_mark: In progress |
-| CVE-2021-21985 VMware vCenter| :heavy_check_mark: In progress |
+| CVE-2017-5638 Apache Struts  | :hourglass_flowing_sand: In progress |
+| CVE-2017-11882 Microsoft     | :hourglass_flowing_sand: In progress |
+| CVE-2018-7600 Drupal         | :hourglass_flowing_sand: In progress |
+| CVE-2018-8174 Windows        | :hourglass_flowing_sand: In progress |
+| CVE-2019-19781 Citrix        | :hourglass_flowing_sand: In progress |
+| CVE-2021-21985 VMware vCenter| :hourglass_flowing_sand: In progress |
 | OWASP Top 10 Scanner         | :hourglass_flowing_sand: In progress |
 | Recon Script                 | :hourglass_flowing_sand: In progress |
 
