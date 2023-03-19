@@ -1,6 +1,34 @@
 ### Lotus Scripts 🌺📜
 
 Welcome to the official Lotus Lua Scripts repository! Here, we provide a collection of Lua scripts to scan different vulnerabilities.
+
+### Scripting Progress :file_folder:
+This table shows the progress of our tool and script development in Lua. We've already rewritten some of our tools, such as the SQLiDetector and Simple SSTI Detector, and we're currently working on several others, including a BugCrowd HunT Framework, a web application scanner, and an SSH bruteforcer.
+
+We're also actively developing scripts for some famous CVEs, such as CVE-2014-2321, CVE-2019-11248, CVE-2020-11450, CVE-2017-5638 Apache Struts, CVE-2017-11882 Microsoft, CVE-2018-7600 Drupal, CVE-2018-8174 Windows, CVE-2019-19781 Citrix, and CVE-2021-21985 VMware vCenter. Additionally, we're working on developing a scanner for the OWASP Top 10 and a recon script.
+
+| Tool/Script                  | Status                       |
+| -----------------------------| ----------------------------|
+| SQLiDetector                 | :heavy_check_mark: Finished  |
+| Simple SSTI Detector         | :heavy_check_mark: Finished  |
+| BugCrowd HunT Framework      | :pushpin: In progress        |
+| CVE-2014-2321.lua            | :heavy_check_mark: Finished  |
+| CVE-2019-11248.lua           | :heavy_check_mark: Finished  |
+| CVE-2020-11450.lua           | :heavy_check_mark: Finished  |
+| CVE-2022-0378.lua            | :heavy_check_mark: In progress |
+| CVE-2022-0381.lua            | :heavy_check_mark: In progress |
+| CVE-2022-1234.lua            | :hourglass_flowing_sand: In progress |
+| Web Application Scanner      | :hourglass_flowing_sand: In progress |
+| SSH Bruteforce               | :hourglass_flowing_sand: In progress |
+| CVE-2017-5638 Apache Struts  | :heavy_check_mark: In progress |
+| CVE-2017-11882 Microsoft     | :heavy_check_mark: In progress |
+| CVE-2018-7600 Drupal         | :heavy_check_mark: In progress |
+| CVE-2018-8174 Windows        | :heavy_check_mark: In progress |
+| CVE-2019-19781 Citrix        | :heavy_check_mark: In progress |
+| CVE-2021-21985 VMware vCenter| :heavy_check_mark: In progress |
+| OWASP Top 10 Scanner         | :hourglass_flowing_sand: In progress |
+| Recon Script                 | :hourglass_flowing_sand: In progress |
+
 ### Usage 🚀
 
 You can use these scripts as an example or on real targets that you have permission to scan. Please use these scripts responsibly and ethically.
