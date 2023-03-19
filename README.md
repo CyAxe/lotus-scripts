@@ -5,7 +5,7 @@ Welcome to the official Lotus Lua Scripts repository! Here, we provide a collect
 ### Scripting Progress :file_folder:
 This table shows the progress of our tool and script development in Lua. We've already rewritten some of our tools, such as the SQLiDetector and Simple SSTI Detector, and we're currently working on several others, including a BugCrowd HunT Framework, a web application scanner, and an SSH bruteforcer.
 
-We're also actively developing scripts for some famous CVEs, such as CVE-2014-2321, CVE-2019-11248, CVE-2020-11450, CVE-2017-5638 Apache Struts, CVE-2017-11882 Microsoft, CVE-2018-7600 Drupal, CVE-2018-8174 Windows, CVE-2019-19781 Citrix, and CVE-2021-21985 VMware vCenter. Additionally, we're working on developing a scanner for the OWASP Top 10 and a recon script.
+We're developing scripts for famous CVEs, like CVE-2014-2321, CVE-2019-11248, CVE-2020-11450, and others. We're also working on a scanner for the OWASP Top 10 and a recon Framework.
 
 | Tool/Script                  | Status                       |
 | -----------------------------| ----------------------------|
