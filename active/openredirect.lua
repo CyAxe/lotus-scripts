@@ -1,6 +1,6 @@
 -- Define constant values
 SCAN_TYPE = 2 -- FULL URL INPUT 
-local urlparse = require "net.url"
+local urlparse = require "libs.net.url"
 local MATCH_HOST = "exdata.so"
 local REDIRECT_PAYLOADS = readfile(JOIN_SCRIPT_DIR("txt/redirect.txt"))
 
