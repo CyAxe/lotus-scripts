@@ -6,11 +6,6 @@ function XSSGenerate(payload_location, response, payload)
 end
 -- JOIN PATH TO SCRIPT PATH
 function JOIN_SCRIPT_DIR(path)end
--- CveReport 
-function CveReport()end
-function VulnReport()end
-function print_vuln_report(report)end
-
 function Reports()end
 function http()end
 function ResponseMatcher()end
@@ -24,11 +19,6 @@ function base64encode(data)end
 
 -- base64decode 
 function base64decode(b64data)
-    
-end
-
--- Print the report in CLI
-function print_report(report)
     
 end
 
@@ -67,28 +57,6 @@ end
 --
 -- `http:set_redirects(3)`
 function http.set_redirects(self,many_redirects)
-    
-end
-    
-
--- Set CVE Report Risk
--- * `setRisk` ["high","medium","low"]
-function CveReport:setRisk(self,risk)
-    
-end
-
-
--- Set CVE Report Name
--- * `setName` String
-function CveReport:setName(self, setName)
-    
-end
-
-
--- Set CVE Report Description
--- * `setDescription` String
-function CveReport:setDescription(self, description)
-    
 end
 
 -- is this text matched with Regex Pattern
@@ -96,42 +64,9 @@ end
 -- * `regex` String
 function is_match(regex, text) end
 
--- Print The CveReport in the console
--- * `CVE_REPORT` - CveReport Class
-function print_cve_report(CVEREPORT)end
 
--- Saving the CVE Report in the JSON output
--- * `CVE_REPORT` - CveReport Class
-function Reports:addCveReport(self, CVEREPORT)end
-
--- Saving the VULN Report in the JSON output
--- * `VULN_REPORT` - VulnReport Class
-function Reports:addVulnReport(self, VULNREPORT)end
-
--- Add CVE Report Matchers
--- You can use this with multiaple lines to add all matches in one list
---```lua
---  CveReport:addMatcher("MATCHED_DATA", MATCH_ID)
---
---```
--- 1 = RawResponse (full response)
---
---
--- 2 = Response Headers
---
---
--- 3 = Reponse Body
---
---
--- 4 = Status Code
---
---
--- above 4 = General
-function CveReport:addMatcher(self,match_string, match_id)end
-
--- Set CVE Report URL
--- * `url` String
-function CveReport:setUrl(self, url)end
+-- Saving the Report in the JSON output
+function Reports:add(self, SCRIPT_REPORT)end
 
 -- Print new line above the progress bar
 function println(text)end
@@ -212,7 +147,3 @@ function ParamScan() end
 function ParamScan:start_scan(self)end
 function ParamScan:add_scan(self,shared_item, shared_iterator, target_function, callback_function, workers_number)end
 function ParamScan:is_stop(self)end
-    
-end
-    
-end
