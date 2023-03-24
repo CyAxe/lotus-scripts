@@ -4,15 +4,16 @@ local SQLI_MATCH = readfile(JOIN_SCRIPT_DIR("txt/sqli_errs.txt"))
 
 -- Define a function to send a vulnerability report
 local function send_report(url, parameter, payload, matching_error)
-   VulnReport:setName("SQL INJECTION")
-   VulnReport:setDescription("https://owasp.org/www-community/attacks/SQL_Injection")
-   VulnReport:setRisk("high")
-   VulnReport:setUrl(url)
-   VulnReport:setParam(parameter)
-   VulnReport:setAttack(payload)
-   VulnReport:setEvidence(matching_error)
-   Reports:addVulnReport(VulnReport)
-   print_vuln_report(VulnReport)
+    local report = {
+        name = "SQL INJECTION",
+        description = "https://owasp.org/www-community/attacks/SQL_Injection",
+        risk = "high",
+        url = url,
+        parameter = parameter,
+        attack = payload,
+        evidence = matching_error
+    }
+    Reports:add(report)
 end
 
 -- Define a function to scan for SQL injection vulnerabilities
