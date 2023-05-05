@@ -1,22 +1,10 @@
-
--- Generate XSS Payloads based on the location of the payload
--- for example: Location = AttrValue, payload = " onerror=alert(1)
-function XSSGenerate(payload_location, response, payload)
-
-end
 -- JOIN PATH TO SCRIPT PATH
-function JOIN_SCRIPT_DIR(path)end
--- CveReport 
-function CveReport()end
-function VulnReport()end
-function print_vuln_report(report)end
+function join_script_dir(path)end
 
-function Reports()end
-function http()end
-function ResponseMatcher()end
+Reports = {}
+http = {}
+Matcher = {}
 
--- pathjoin
--- path join function can be used for urlpath join to avoid duplicates output 
 function pathjoin(current_path, new_path)end
 
 -- base64encode
@@ -27,27 +15,22 @@ function base64decode(b64data)
     
 end
 
--- Print the report in CLI
-function print_report(report)
-    
-end
-
 -- Sending http request
 -- * `method` http method
 -- * `url` target url
 -- * `body` request body
 -- * `headers` request headesr in table
+-- * `redirects` number of redirects for this request
 --
 -- Example:
 --
 -- ```lua
 -- local status, resp = pcall(function() 
---      return http:send("GET","http://example.com/",nil,{"X-API": "123"})
+--      return http:send{method = "POST" ,url = "http://example.com/", headers = {"X-API": "123"})
 --end)
 --
 -- ```
-function http.send(self,method, url,body, headers)
-
+function http.send(self,request_opts)
 end
 
 
@@ -58,7 +41,6 @@ end
 --
 -- `http:set_proxy('http:set_proxy('http://localhost:8080/')')`
 function http.set_proxy(self, proxy_url)
-    
 end
 
 -- Set the max http redirects
@@ -67,71 +49,16 @@ end
 --
 -- `http:set_redirects(3)`
 function http.set_redirects(self,many_redirects)
-    
-end
-    
-
--- Set CVE Report Risk
--- * `setRisk` ["high","medium","low"]
-function CveReport:setRisk(self,risk)
-    
 end
 
-
--- Set CVE Report Name
--- * `setName` String
-function CveReport:setName(self, setName)
-    
-end
-
-
--- Set CVE Report Description
--- * `setDescription` String
-function CveReport:setDescription(self, description)
-    
-end
 
 -- is this text matched with Regex Pattern
 -- * `text` String
 -- * `regex` String
-function is_match(regex, text) end
+function Matcher.is_match(self,regex, text) end
 
--- Print The CveReport in the console
--- * `CVE_REPORT` - CveReport Class
-function print_cve_report(CVEREPORT)end
-
--- Saving the CVE Report in the JSON output
--- * `CVE_REPORT` - CveReport Class
-function Reports:addCveReport(self, CVEREPORT)end
-
--- Saving the VULN Report in the JSON output
--- * `VULN_REPORT` - VulnReport Class
-function Reports:addVulnReport(self, VULNREPORT)end
-
--- Add CVE Report Matchers
--- You can use this with multiaple lines to add all matches in one list
---```lua
---  CveReport:addMatcher("MATCHED_DATA", MATCH_ID)
---
---```
--- 1 = RawResponse (full response)
---
---
--- 2 = Response Headers
---
---
--- 3 = Reponse Body
---
---
--- 4 = Status Code
---
---
--- above 4 = General
-function CveReport:addMatcher(self,match_string, match_id)end
-
--- Set CVE Report URL
--- * `url` String
-function CveReport:setUrl(self, url)end
+-- Saving the Report in the JSON output
+function Reports:add(self, report_table)end
 
 -- Print new line above the progress bar
 function println(text)end
@@ -155,36 +82,38 @@ function log_warn(txt)end
 function log_debug(txt)end
 
 
--- Regex matching
-function is_match(pattern, text)
-    
-end
-
--- Generate CSS Selector Pattern for XSS Payloads
-function generate_css_selector(payload)
-    
-end
 
 
--- Searching in HTML for the location of custom payload
--- for example, html_search("<h1 align='righthacker'>yes</h1>","hacker") -> Location:AttrValue
-function html_parse(html_data, payload)
-    
-end
+-- Ensures that the response body matches the specified list based on the 'and' condition
+-- Parameters:
+-- * `body` (String)
+-- * `text_list` (table)
+function Matcher:match_body(self, body, text_list) end
 
--- Searching in HTML with CSS Selector Pattern
--- Return `String`
-function html_search(html_data, css_pattern)
-    
-end
+-- Checks if the response matches with any one item from the specified strings list
+-- Parameters:
+-- * `body` (String)
+-- * `text_list` (Table)
+-- * `is_regex` (boolean)
+function Matcher:match_body_once(self, body, text_list, is_regex) end
 
+-- Replaces a string with another one using regular expressions
+-- Parameters:
+-- * `body` (String)
+-- * `regex` (String)
+-- * `replacement` (String)
+function Matcher:replace(self, body, regex, replacement) end
 
+-- Extracts a substring from the response that matches the specified regular expression
+-- Parameters:
+-- * `regex` (String)
+-- * `response` (String)
+function Matcher:extract(self, regex, response) end
 
--- Making sure that the response body matches the list by the `and` condition
--- * `body` String
--- * `text_list` table
-function ResponseMatcher:match_body(self,body, txt) end
-
+-- Sets options for the regular expression matcher
+-- Parameters:
+-- * `regex_opts_table` (table)
+function Matcher:options(self, regex_opts_table) end
 
 -- is the string startswith X or not
 -- * `txt` - String
@@ -212,7 +141,3 @@ function ParamScan() end
 function ParamScan:start_scan(self)end
 function ParamScan:add_scan(self,shared_item, shared_iterator, target_function, callback_function, workers_number)end
 function ParamScan:is_stop(self)end
-    
-end
-    
-end
