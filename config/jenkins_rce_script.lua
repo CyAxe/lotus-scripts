@@ -17,7 +17,7 @@ function main()
     for _, path in pairs(PAYLOADS) do
         local new_url = HttpMessage:urlJoin(path)
         local status, resp = pcall(function()
-            return http:send { "GET", url = new_url }
+            return http:send { url = new_url }
         end)
 
         local body = resp["body"]
