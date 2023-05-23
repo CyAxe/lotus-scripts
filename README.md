@@ -13,6 +13,7 @@ We're developing scripts for famous CVEs, like CVE-2014-2321, CVE-2019-11248, CV
 | Simple SSTI Detector         | :heavy_check_mark: Finished  |
 | PHPINFO Finder               | :heavy_check_mark: Finished |
 | Jenkins /script RCE Scanner          | :heavy_check_mark: Finished  |
+| Basic LFI Scanner             | :heavy_check_mark: Finished  |
 | BugCrowd HunT Framework      | :hourglass_flowing_sand: In progress        |
 | CVE-2014-2321.lua            | :heavy_check_mark: Finished  |
 | CVE-2019-11248.lua           | :heavy_check_mark: Finished  |
