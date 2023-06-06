@@ -27,6 +27,7 @@ We're developing scripts for famous CVEs, like CVE-2014-2321, CVE-2019-11248, CV
 | CVE-2018-7600 Drupal         | :hourglass_flowing_sand: In progress |
 | CVE-2018-8174 Windows        | :hourglass_flowing_sand: In progress |
 | CVE-2019-19781 Citrix        | :hourglass_flowing_sand: In progress |
+| CVE-2021-21972 VMware vCenter | :heavy_check_mark: Finished  |
 | CVE-2021-21985 VMware vCenter| :hourglass_flowing_sand: In progress |
 | OWASP Top 10 Scanner         | :hourglass_flowing_sand: In progress |
 | Recon Script                 | :hourglass_flowing_sand: In progress |
