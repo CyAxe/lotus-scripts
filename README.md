@@ -18,8 +18,8 @@ We're developing scripts for famous CVEs, like CVE-2014-2321, CVE-2019-11248, CV
 | CVE-2014-2321.lua            | :heavy_check_mark: Finished  |
 | CVE-2019-11248.lua           | :heavy_check_mark: Finished  |
 | CVE-2020-11450.lua           | :heavy_check_mark: Finished  |
-| CVE-2022-0378.lua            | :heavy_check_mark: In progress |
-| CVE-2022-0381.lua            | :heavy_check_mark: In progress |
+| CVE-2022-0378.lua            | :heavy_check_mark: Finished  |
+| CVE-2022-0381.lua            | :heavy_check_mark: Finished  |
 | CVE-2022-1234.lua            | :hourglass_flowing_sand: In progress |
 | SSH Bruteforce               | :hourglass_flowing_sand: In progress |
 | CVE-2017-5638 Apache Struts  | :hourglass_flowing_sand: In progress |
