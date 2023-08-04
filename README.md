@@ -11,22 +11,28 @@ We're developing scripts for famous CVEs, like CVE-2014-2321, CVE-2019-11248, CV
 | -----------------------------| ----------------------------|
 | SQLiDetector                 | :heavy_check_mark: Finished  |
 | Simple SSTI Detector         | :heavy_check_mark: Finished  |
+| PHPINFO Finder               | :heavy_check_mark: Finished |
+| Jenkins /script RCE Scanner          | :heavy_check_mark: Finished  |
+| Basic LFI Scanner             | :heavy_check_mark: Finished  |
 | BugCrowd HunT Framework      | :hourglass_flowing_sand: In progress        |
 | Git Dir leakage scanner      | :heavy_check_mark: Finished  |
+| extractfromjs | :heavy_check_mark: Finished  |
 | CVE-2014-2321.lua            | :heavy_check_mark: Finished  |
 | CVE-2019-11248.lua           | :heavy_check_mark: Finished  |
 | CVE-2020-11450.lua           | :heavy_check_mark: Finished  |
-| CVE-2022-0378.lua            | :heavy_check_mark: In progress |
-| CVE-2022-0381.lua            | :heavy_check_mark: In progress |
+| CVE-2022-0378.lua            | :heavy_check_mark: Finished  |
+| CVE-2022-0381.lua            | :heavy_check_mark: Finished  |
 | CVE-2022-1234.lua            | :hourglass_flowing_sand: In progress |
-| Web Application Scanner      | :hourglass_flowing_sand: In progress |
 | SSH Bruteforce               | :hourglass_flowing_sand: In progress |
 | CVE-2017-5638 Apache Struts  | :hourglass_flowing_sand: In progress |
 | CVE-2017-11882 Microsoft     | :hourglass_flowing_sand: In progress |
 | CVE-2018-7600 Drupal         | :hourglass_flowing_sand: In progress |
 | CVE-2018-8174 Windows        | :hourglass_flowing_sand: In progress |
 | CVE-2019-19781 Citrix        | :hourglass_flowing_sand: In progress |
-| CVE-2021-21985 VMware vCenter| :hourglass_flowing_sand: In progress |
+| CVE-2021-21972 VMware vCenter | :heavy_check_mark: Finished  |
+| CVE-2021-21985 VMware vCenter| :heavy_check_mark: Finished |
+| CVE-2023-23752 Joomla! CMS   | :heavy_check_mark: Finished  |
+| CVE-2023-23333 SolarView Compact | :heavy_check_mark: Finished  |
 | OWASP Top 10 Scanner         | :hourglass_flowing_sand: In progress |
 | Recon Script                 | :hourglass_flowing_sand: In progress |
 

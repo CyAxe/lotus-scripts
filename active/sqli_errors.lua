@@ -1,23 +1,23 @@
 -- Define constant values
 SCAN_TYPE = 2 -- FULL URL INPUT 
-local SQLI_MATCH = readfile(JOIN_SCRIPT_DIR("txt/sqli_errs.txt"))
+local SQLI_MATCH = readfile(join_script_dir("txt/sqli_errs.txt"))
 
 -- Define a function to send a vulnerability report
 local function send_report(url, parameter, payload, matching_error)
-   VulnReport:setName("SQL INJECTION")
-   VulnReport:setDescription("https://owasp.org/www-community/attacks/SQL_Injection")
-   VulnReport:setRisk("high")
-   VulnReport:setUrl(url)
-   VulnReport:setParam(parameter)
-   VulnReport:setAttack(payload)
-   VulnReport:setEvidence(matching_error)
-   Reports:addVulnReport(VulnReport)
-   print_vuln_report(VulnReport)
+   Reports:add {
+       name = "Error Based SQL INJECTION",
+       description = "https://owasp.org/www-community/attacks/SQL_Injection",
+       risk = "high",
+       url = url,
+       parameter = parameter,
+       payload = payload,
+       matches = matching_error,
+   }
 end
 
 -- Define a function to scan for SQL injection vulnerabilities
 local function scan_sqli(param_name, payload)
-   local new_url = HttpMessage:setParam(param_name, payload)
+   local new_url = HttpMessage:param_set(param_name, payload)
    local resp_status, resp = pcall(function ()
       -- Sending an HTTP request to the new URL with GET method
       return http:send{url = new_url}
@@ -45,7 +45,7 @@ local function sqli_callback(data)
       local match_status, match = pcall(function ()
          -- Matching with the response and the targeted regex
          -- we're using pcall here to avoid regex errors (and panic the code)
-         return is_match(sql_regex, body)
+         return Matcher:is_match(sql_regex, body)
       end)
       if match_status == true and match == true then
          -- Send a vulnerability report and stop the parameter scan
@@ -58,7 +58,7 @@ end
 -- Define the main function to initiate the parameter scan
 function main()
    local payloads = {"'", '"'}
-   for _, param in ipairs(HttpMessage:Params()) do
+   for _, param in ipairs(HttpMessage:param_list()) do
       ParamScan:start_scan()
       ParamScan:add_scan(param, payloads, scan_sqli, sqli_callback, FUZZ_WORKERS)
    end
