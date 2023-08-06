@@ -27,11 +27,9 @@ function removeDuplicates(list)
 end
 
 function main()
-    println("START")
     local status,resp = pcall(function ()
         return http:send{ method = "GET", url = HttpMessage:url()}
     end)
-    println("DONE")
     if status ~= false then
         local extracts = removeDuplicates(Matcher:extract(REGEX_PATTENR,resp["body"]))
         local results = {}
