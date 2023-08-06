@@ -37,9 +37,13 @@ function main()
         for _, value in ipairs(extracts) do
             table.insert(results,removeFirstAndLastChar(value))
         end
-        Reports:add {
-            endpoint = HttpMessage:url(),
-            full_results = results
-        }
+        if #results == 0 then
+            -- Nothing
+        else
+            Reports:add {
+                endpoint = HttpMessage:url(),
+                full_results = results
+            }
+        end
     end
 end
