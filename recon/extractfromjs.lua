@@ -3,7 +3,13 @@ SCAN_TYPE = 3
 local REGEX_PATTENR = [[(?:"|')(\/[\w\d\xA0-\xFF?/&=#.!:_-]*?)(?:"|')]]
 
 function removeFirstAndLastChar(str)
-    return str:sub(2, -2)
+    local the_str = str:sub(2, -2)
+    if ENV["urljoin"] ~= true then
+        return the_str
+    else
+        url_parse = HttpMessage:clone()
+        return url_parse:urljoin(the_str)
+    end
 end
 
 function removeDuplicates(list)
@@ -21,9 +27,11 @@ function removeDuplicates(list)
 end
 
 function main()
+    println("START")
     local status,resp = pcall(function ()
         return http:send{ method = "GET", url = HttpMessage:url()}
     end)
+    println("DONE")
     if status ~= false then
         local extracts = removeDuplicates(Matcher:extract(REGEX_PATTENR,resp["body"]))
         local results = {}
@@ -31,8 +39,9 @@ function main()
         for _, value in ipairs(extracts) do
             table.insert(results,removeFirstAndLastChar(value))
         end
-        Reports:add{
-            results = results
+        Reports:add {
+            endpoint = HttpMessage:url(),
+            full_results = results
         }
     end
 end
