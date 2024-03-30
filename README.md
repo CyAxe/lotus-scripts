@@ -15,6 +15,7 @@ We're developing scripts for famous CVEs, like CVE-2014-2321, CVE-2019-11248, CV
 | Jenkins /script RCE Scanner          | :heavy_check_mark: Finished  |
 | Basic LFI Scanner             | :heavy_check_mark: Finished  |
 | BugCrowd HunT Framework      | :hourglass_flowing_sand: In progress        |
+| Git Dir leakage scanner      | :heavy_check_mark: Finished  |
 | extractfromjs | :heavy_check_mark: Finished  |
 | CVE-2014-2321.lua            | :heavy_check_mark: Finished  |
 | CVE-2019-11248.lua           | :heavy_check_mark: Finished  |
