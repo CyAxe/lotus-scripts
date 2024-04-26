@@ -24,7 +24,7 @@ We're developing scripts for famous CVEs, like CVE-2014-2321, CVE-2019-11248, CV
 | CVE-2022-0381.lua            | :heavy_check_mark: Finished  |
 | CVE-2022-1234.lua            | :hourglass_flowing_sand: In progress |
 | SSH Bruteforce               | :hourglass_flowing_sand: In progress |
-| CVE-2017-5638 Apache Struts  | :hourglass_flowing_sand: In progress |
+| CVE-2017-5638 Apache Struts  | :heavy_check_mark: Finished|
 | CVE-2017-11882 Microsoft     | :hourglass_flowing_sand: In progress |
 | CVE-2018-7600 Drupal         | :hourglass_flowing_sand: In progress |
 | CVE-2018-8174 Windows        | :hourglass_flowing_sand: In progress |
